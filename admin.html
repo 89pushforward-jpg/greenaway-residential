@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Admin — Greenaway Residential</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/greenaway-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body style="background:var(--tint)">
+
+<!-- PIN gate -->
+<div id="pinGate">
+  <div class="pin-box">
+    <img src="assets/greenaway-logo.png" alt="Greenaway Residential">
+    <h1 style="font-size:20px;margin-bottom:6px">Property Admin</h1>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:18px">Enter your PIN to manage listings.<br><b>Demo PIN: 1234</b></p>
+    <input id="pinInput" type="password" inputmode="numeric" maxlength="4" placeholder="••••">
+    <p id="pinErr" style="display:none;color:#b23838;font-size:13px;margin-top:10px">Wrong PIN — try 1234.</p>
+    <button class="btn btn-green" style="width:100%;margin-top:16px" id="pinBtn">Log in</button>
+  </div>
+</div>
+
+<!-- app -->
+<div id="app" style="display:none">
+  <header style="position:static">
+    <div class="container nav" style="height:74px">
+      <a href="index.html" class="logo"><img src="assets/greenaway-logo.png" alt="Greenaway Residential" style="height:48px"></a>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a class="btn btn-outline btn-sm" href="index.html" target="_blank">View website ↗</a>
+        <button class="btn btn-outline btn-sm" id="logoutBtn" type="button">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="admin-wrap">
+    <div class="demo-banner">⚠ <b>Preview demo.</b> Changes are saved only in this browser so you can try everything safely. The production version saves to your live website — every change is online in seconds.</div>
+
+    <div class="admin-top">
+      <h1>Property Admin</h1>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <div class="admin-tabs">
+          <button class="on" data-tab="props" type="button">Properties</button>
+          <button data-tab="enq" type="button">Enquiries <span id="enqCount" style="opacity:.7"></span></button>
+        </div>
+        <button class="btn btn-green btn-sm" id="addBtn" type="button">+ Add property</button>
+      </div>
+    </div>
+
+    <!-- properties tab -->
+    <div id="tab-props">
+      <div class="admin-list" id="propList"></div>
+
+      <!-- editor -->
+      <div class="admin-editor" id="editor" style="display:none">
+        <h2 id="edTitle">Edit property</h2>
+        <div class="grid-2">
+          <div><label>Address / headline</label><input id="eAddr" placeholder="e.g. Wood Street, East Grinstead"></div>
+          <div><label>Reference (optional)</label><input id="eRef" placeholder="e.g. EAG260130"></div>
+        </div>
+        <div class="grid-4">
+          <div><label>Sale or rent</label><select id="eMode"><option value="rent">To rent</option><option value="sale">For sale</option></select></div>
+          <div><label>Price (£)</label><input id="ePrice" type="number" min="0" placeholder="1250"></div>
+          <div><label>Status</label><select id="eStatus"></select></div>
+          <div><label>Type</label><select id="eType"><option>Apartment</option><option>Flat</option><option>Terraced house</option><option>Semi-detached house</option><option>Detached house</option><option>Bungalow</option><option>Maisonette</option></select></div>
+        </div>
+        <div class="grid-4">
+          <div><label>Bedrooms</label><input id="eBeds" type="number" min="0" value="1"></div>
+          <div><label>Bathrooms</label><input id="eBaths" type="number" min="0" value="1"></div>
+          <div><label>Reception rooms</label><input id="eRecs" type="number" min="0" value="1"></div>
+          <div><label>Furnishing</label><select id="eFurn"><option>Unfurnished</option><option>Furnished</option><option>Part furnished</option><option value="">—</option></select></div>
+        </div>
+        <div class="grid-2">
+          <div><label>Available</label><input id="eAvail" placeholder="e.g. Now / Early August"></div>
+          <div><label>Map search (address for the map)</label><input id="eMapQ" placeholder="e.g. Wood Street, East Grinstead RH19"></div>
+        </div>
+        <label>Short summary (one sentence, shown under the headline)</label>
+        <input id="eSummary" placeholder="e.g. Modern furnished apartment with parking…">
+        <label>Description (blank line = new paragraph)</label>
+        <textarea id="eDesc" style="min-height:160px"></textarea>
+        <label>Key features (one per line)</label>
+        <textarea id="eFeat"></textarea>
+
+        <label>Photos (first photo = cover — shown on the website cards)</label>
+        <input type="file" id="ePhotosInput" accept="image/*" multiple style="padding:9px 14px;height:auto">
+        <div class="photo-strip" id="photoStrip"></div>
+
+        <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap">
+          <button class="btn btn-green" id="saveBtn" type="button">Save property</button>
+          <button class="btn btn-outline" id="cancelBtn" type="button">Cancel</button>
+          <span id="saveMsg" style="align-self:center;color:var(--green);font-weight:600;font-size:14px;display:none">✓ Saved — it's live on the site pages now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- enquiries tab -->
+    <div id="tab-enq" style="display:none">
+      <div class="admin-list" id="enqList"></div>
+    </div>
+  </div>
+</div>
+
+<script src="properties.js?v=1"></script>
+<script>
+(function(){
+  var STATUSES = {rent:['To Let','Let Agreed','Let'], sale:['For Sale','Under Offer','Sold STC','Sold']};
+
+  /* ---- PIN gate (demo) ---- */
+  var gate=document.getElementById('pinGate'), app=document.getElementById('app');
+  function tryPin(){
+    if(document.getElementById('pinInput').value==='1234'){
+      sessionStorage.setItem('gr-admin','1'); gate.style.display='none'; app.style.display='block'; renderList(); renderEnq();
+    } else document.getElementById('pinErr').style.display='block';
+  }
+  document.getElementById('pinBtn').addEventListener('click',tryPin);
+  document.getElementById('pinInput').addEventListener('keydown',function(e){ if(e.key==='Enter') tryPin(); });
+  document.getElementById('logoutBtn').addEventListener('click',function(){ sessionStorage.removeItem('gr-admin'); location.reload(); });
+  if(sessionStorage.getItem('gr-admin')==='1'){ gate.style.display='none'; app.style.display='block'; }
+
+  /* ---- tabs ---- */
+  document.querySelectorAll('.admin-tabs button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.admin-tabs button').forEach(function(x){ x.classList.toggle('on',x===b); });
+      document.getElementById('tab-props').style.display = b.dataset.tab==='props'?'block':'none';
+      document.getElementById('tab-enq').style.display = b.dataset.tab==='enq'?'block':'none';
+      if(b.dataset.tab==='enq') renderEnq();
+    });
+  });
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  /* ---- property list ---- */
+  function renderList(){
+    var list=document.getElementById('propList');
+    list.innerHTML = window.GRProps.getAll(true).map(function(p){
+      var cover=(p.photos&&p.photos[0])||'assets/East-Grinstead-2200x1237.jpg';
+      var badges='<span class="badge-st'+(p.hidden?' off':'')+'">'+esc(p.status)+'</span>'+(p.hidden?' <span class="badge-st off">Hidden</span>':'');
+      var actions='<button class="btn btn-outline btn-sm" data-edit="'+esc(p.id)+'">Edit</button>'+
+        '<button class="btn btn-outline btn-sm" data-hide="'+esc(p.id)+'">'+(p.hidden?'Show':'Hide')+'</button>'+
+        (p._default?'':'<button class="btn btn-danger btn-sm" data-del="'+esc(p.id)+'">Delete</button>');
+      return '<div class="admin-row"><img src="'+esc(cover)+'" alt="">'+
+        '<div><div class="a-addr">'+esc(p.address)+'</div>'+
+        '<div class="a-meta">'+window.GRProps.priceLabel(p).replace('<small>','').replace('</small>','')+' · '+esc(p.beds)+' bed · '+esc(p.type)+' &nbsp; '+badges+'</div></div>'+
+        '<div class="a-actions">'+actions+'</div></div>';
+    }).join('');
+  }
+
+  document.getElementById('propList').addEventListener('click',function(e){
+    var t=e.target;
+    if(t.dataset.edit) openEditor(t.dataset.edit);
+    if(t.dataset.hide){
+      var p=window.GRProps.getAll(true).filter(function(x){return x.id===t.dataset.hide;})[0];
+      setProp(t.dataset.hide, {hidden: !p.hidden});
+      renderList();
+    }
+    if(t.dataset.del && confirm('Delete this property?')){
+      window.GRProps.saveCustom(window.GRProps.getCustom().filter(function(x){ return x.id!==t.dataset.del; }));
+      renderList();
+    }
+  });
+
+  function setProp(id, patch){
+    var custom=window.GRProps.getCustom();
+    var hit=custom.filter(function(x){return x.id===id;})[0];
+    if(hit){ Object.assign(hit,patch); window.GRProps.saveCustom(custom); }
+    else window.GRProps.saveOverride(id,patch);
+  }
+
+  /* ---- editor ---- */
+  var editing=null, photos=[];
+  var fields={addr:'eAddr',ref:'eRef',mode:'eMode',price:'ePrice',status:'eStatus',type:'eType',beds:'eBeds',baths:'eBaths',recs:'eRecs',furn:'eFurn',avail:'eAvail',mapQ:'eMapQ',summary:'eSummary',desc:'eDesc',feat:'eFeat'};
+
+  function fillStatuses(mode, sel){
+    var s=document.getElementById('eStatus');
+    s.innerHTML=STATUSES[mode].map(function(x){ return '<option'+(x===sel?' selected':'')+'>'+x+'</option>'; }).join('');
+  }
+  document.getElementById('eMode').addEventListener('change',function(){ fillStatuses(this.value); });
+
+  function openEditor(id){
+    var p = id ? window.GRProps.getAll(true).filter(function(x){return x.id===id;})[0] : null;
+    editing = id || null;
+    document.getElementById('edTitle').textContent = p ? 'Edit — '+p.address : 'Add new property';
+    document.getElementById('eAddr').value = p?p.address:'';
+    document.getElementById('eRef').value = p?(p.ref||''):'';
+    document.getElementById('eMode').value = p?p.mode:'rent';
+    fillStatuses(p?p.mode:'rent', p?p.status:null);
+    document.getElementById('ePrice').value = p?p.price:'';
+    document.getElementById('eType').value = p?p.type:'Apartment';
+    document.getElementById('eBeds').value = p?p.beds:1;
+    document.getElementById('eBaths').value = p?p.baths:1;
+    document.getElementById('eRecs').value = p?p.receptions:1;
+    document.getElementById('eFurn').value = p?(p.furnished||''):'Unfurnished';
+    document.getElementById('eAvail').value = p?(p.available||''):'';
+    document.getElementById('eMapQ').value = p?(p.mapQ||''):'';
+    document.getElementById('eSummary').value = p?(p.summary||''):'';
+    document.getElementById('eDesc').value = p?(p.description||[]).join('\n\n'):'';
+    document.getElementById('eFeat').value = p?(p.features||[]).join('\n'):'';
+    photos = p ? (p.photos||[]).slice() : [];
+    renderPhotos();
+    document.getElementById('saveMsg').style.display='none';
+    var ed=document.getElementById('editor');
+    ed.style.display='block';
+    ed.scrollIntoView({behavior:'smooth'});
+  }
+  document.getElementById('addBtn').addEventListener('click',function(){ openEditor(null); });
+  document.getElementById('cancelBtn').addEventListener('click',function(){ document.getElementById('editor').style.display='none'; });
+
+  /* photos: upload with client-side resize so the demo fits in browser storage */
+  function renderPhotos(){
+    var strip=document.getElementById('photoStrip');
+    strip.innerHTML = photos.map(function(src,i){
+      return '<div class="photo-item'+(i===0?' cover':'')+'"><img src="'+src+'">'+
+        '<button class="ph-x" data-x="'+i+'" title="Remove" type="button">×</button>'+
+        (i===0?'<div style="text-align:center;font-size:11px;color:var(--green);font-weight:700;margin-top:4px">COVER</div>':'<button class="ph-cover" data-c="'+i+'" type="button">Set as cover</button>')+
+        '</div>';
+    }).join('');
+  }
+  document.getElementById('photoStrip').addEventListener('click',function(e){
+    if(e.target.dataset.x!==undefined){ photos.splice(Number(e.target.dataset.x),1); renderPhotos(); }
+    if(e.target.dataset.c!==undefined){ var ph=photos.splice(Number(e.target.dataset.c),1)[0]; photos.unshift(ph); renderPhotos(); }
+  });
+  document.getElementById('ePhotosInput').addEventListener('change',function(){
+    Array.prototype.forEach.call(this.files,function(file){
+      var img=new Image();
+      img.onload=function(){
+        var MAX=1200, w=img.width, h=img.height;
+        if(w>MAX){ h=Math.round(h*MAX/w); w=MAX; }
+        var c=document.createElement('canvas'); c.width=w; c.height=h;
+        c.getContext('2d').drawImage(img,0,0,w,h);
+        photos.push(c.toDataURL('image/jpeg',0.75));
+        renderPhotos();
+        URL.revokeObjectURL(img.src);
+      };
+      img.src=URL.createObjectURL(file);
+    });
+    this.value='';
+  });
+
+  document.getElementById('saveBtn').addEventListener('click',function(){
+    var addr=document.getElementById('eAddr').value.trim();
+    if(!addr){ alert('Please enter the address / headline.'); return; }
+    var obj={
+      address:addr,
+      ref:document.getElementById('eRef').value.trim(),
+      mode:document.getElementById('eMode').value,
+      price:Number(document.getElementById('ePrice').value)||0,
+      status:document.getElementById('eStatus').value,
+      type:document.getElementById('eType').value,
+      beds:Number(document.getElementById('eBeds').value)||0,
+      baths:Number(document.getElementById('eBaths').value)||0,
+      receptions:Number(document.getElementById('eRecs').value)||0,
+      furnished:document.getElementById('eFurn').value,
+      available:document.getElementById('eAvail').value.trim(),
+      mapQ:document.getElementById('eMapQ').value.trim() || (addr+', East Grinstead'),
+      summary:document.getElementById('eSummary').value.trim(),
+      description:document.getElementById('eDesc').value.split(/\n\s*\n/).map(function(s){return s.trim();}).filter(Boolean),
+      features:document.getElementById('eFeat').value.split('\n').map(function(s){return s.trim();}).filter(Boolean),
+      photos:photos.slice()
+    };
+    try{
+      if(editing){
+        var custom=window.GRProps.getCustom();
+        var hit=custom.filter(function(x){return x.id===editing;})[0];
+        if(hit){ Object.assign(hit,obj); window.GRProps.saveCustom(custom); }
+        else window.GRProps.saveOverride(editing,obj);
+      } else {
+        obj.id = 'new-' + addr.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') + '-' + Math.random().toString(36).slice(2,7);
+        var list=window.GRProps.getCustom(); list.push(obj); window.GRProps.saveCustom(list);
+        editing = obj.id;
+      }
+      document.getElementById('saveMsg').style.display='inline';
+      renderList();
+    }catch(err){
+      alert('Browser storage is full (demo limit). Remove a photo or two — the production version stores photos on the server, with no such limit.');
+    }
+  });
+
+  /* ---- enquiries ---- */
+  var KIND_LABEL={viewing:'Viewing request',valuation:'Valuation request','instant-valuation':'Instant valuation used'};
+  function renderEnq(){
+    var list=window.GRProps.getEnquiries();
+    document.getElementById('enqCount').textContent = list.filter(function(e){return !e.done;}).length ? '('+list.filter(function(e){return !e.done;}).length+')' : '';
+    var el=document.getElementById('enqList');
+    if(!list.length){ el.innerHTML='<p style="color:var(--muted)">No enquiries yet. Submit the valuation form, the instant valuation, or a property "Book a Viewing" form on the website — everything lands here.</p>'; return; }
+    el.innerHTML = list.map(function(e,i){
+      var d=new Date(e.ts);
+      return '<div class="enq-row'+(e.done?' done':'')+'">'+
+        '<div class="e-head"><span>'+esc(KIND_LABEL[e.kind]||e.kind)+(e.property?' — '+esc(e.property):'')+'</span>'+
+        '<button class="btn btn-outline btn-sm" data-done="'+i+'" type="button">'+(e.done?'Reopen':'Mark done')+'</button></div>'+
+        (e.name && e.name!=='(instant tool)' ? '<div>'+esc(e.name)+(e.phone?' · <a href="tel:'+esc(e.phone)+'" style="color:var(--green);font-weight:600">'+esc(e.phone)+'</a>':'')+(e.email?' · '+esc(e.email):'')+'</div>':'')+
+        (e.msg?'<div class="e-meta">'+esc(e.msg)+'</div>':'')+
+        '<div class="e-meta">'+d.toLocaleString('en-GB')+'</div></div>';
+    }).join('');
+  }
+  document.getElementById('enqList').addEventListener('click',function(e){
+    if(e.target.dataset.done!==undefined){
+      var list=window.GRProps.getEnquiries();
+      list[Number(e.target.dataset.done)].done = !list[Number(e.target.dataset.done)].done;
+      window.GRProps.setEnquiries(list);
+      renderEnq();
+    }
+  });
+
+  if(sessionStorage.getItem('gr-admin')==='1'){ renderList(); renderEnq(); }
+})();
+</script>
+</body>
+</html>

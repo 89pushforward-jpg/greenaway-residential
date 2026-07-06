@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=3">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -79,7 +79,10 @@
     <h1>Independent Estate Agents in East Grinstead, West Sussex</h1>
     <p class="sub">A reassuringly safe area, great schools, and stunning Medieval and Tudor architecture. Whether you're buying, selling, renting or letting — you're in the safest of hands.</p>
     <div class="hero-actions">
-      <a class="btn btn-green" href="#valuation">Book a Valuation</a>
+      <button class="btn btn-white" type="button" data-iv-open>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        Get an Instant Online Valuation
+      </button>
       <a class="btn btn-ghost" href="#properties">View Properties</a>
     </div>
   </div>
@@ -120,38 +123,7 @@
       <h2>Featured properties</h2>
       <p>Your real, current listings — on the live site they update automatically.</p>
     </div>
-    <div class="props-grid">
-      <article class="prop reveal" data-mode="rent">
-        <a href="https://greenawayresidential.com/property/eag260121-london-road/" target="_blank" rel="noopener">
-          <div class="ph"><img src="assets/EAG260121_08-1200x800.jpg" alt="Flat to let on London Road, East Grinstead" loading="lazy"><span class="stag">To Let</span></div>
-          <div class="body">
-            <div class="price">£1,125 <small>monthly</small></div>
-            <div class="addr">London Road, East Grinstead</div>
-            <div class="meta"><span>1 bed</span><span>1 bath</span><span>1 reception</span></div>
-          </div>
-        </a>
-      </article>
-      <article class="prop reveal" data-mode="rent">
-        <a href="https://greenawayresidential.com/property/eag260117-wood-street/" target="_blank" rel="noopener">
-          <div class="ph"><img src="assets/EAG260117_02-1200x800.jpg" alt="Flat on Wood Street, East Grinstead — let agreed" loading="lazy"><span class="stag agreed">Let Agreed</span></div>
-          <div class="body">
-            <div class="price">£1,260 <small>monthly</small></div>
-            <div class="addr">Wood Street, East Grinstead</div>
-            <div class="meta"><span>1 bed</span><span>1 bath</span><span>1 reception</span></div>
-          </div>
-        </a>
-      </article>
-      <article class="prop reveal" data-mode="rent">
-        <a href="https://greenawayresidential.com/property/eag260116-wood-street/" target="_blank" rel="noopener">
-          <div class="ph"><img src="assets/EAG260116_06-1200x800.jpg" alt="Flat to let on Wood Street, East Grinstead" loading="lazy"><span class="stag">To Let</span></div>
-          <div class="body">
-            <div class="price">£1,300 <small>monthly</small></div>
-            <div class="addr">Wood Street, East Grinstead</div>
-            <div class="meta"><span>1 bed</span><span>1 bath</span><span>1 reception</span></div>
-          </div>
-        </a>
-      </article>
-    </div>
+    <div class="props-grid" id="propsGrid"></div>
   </div>
 </section>
 
@@ -259,6 +231,7 @@
       <div class="val-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><span>Submitted <b>securely over HTTPS</b> — straight to our local team, never sold on.</span></div>
       <button type="submit" class="btn btn-green" style="width:100%">Request Free Valuation</button>
       <div class="val-success" id="valSuccess">✓ Thank you — one of the team will call you shortly to arrange your valuation.</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:14px;text-align:center">In a hurry? <a href="#" data-iv-open style="color:var(--green);font-weight:600">Get an instant online estimate →</a></p>
     </form>
   </div>
 </section>
@@ -323,7 +296,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Greenaway Residential Estate Agents And Letting Agents. All rights reserved.</span>
-      <span>Sales · Lettings · Property Management</span>
+      <span>Sales · Lettings · Property Management · <a href="admin.html">Admin</a></span>
     </div>
   </div>
 </footer>
@@ -334,6 +307,49 @@
   <a class="val" href="#valuation">Book a Valuation</a>
 </div>
 
-<script src="site.js?v=1"></script>
+<!-- instant online valuation (modal, demo) -->
+<div class="modal-backdrop" id="ivModal">
+  <div class="modal" role="dialog" aria-label="Instant online valuation">
+    <button class="modal-close" data-iv-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div id="ivStep1">
+      <h3>Instant Online Valuation</h3>
+      <p>A ballpark figure in 10 seconds — no waiting, no obligation.</p>
+      <form id="ivForm">
+        <label for="ivPostcode">Postcode</label>
+        <input id="ivPostcode" type="text" placeholder="e.g. RH19 1EP" required>
+        <div class="val-row">
+          <div>
+            <label for="ivType">Property type</label>
+            <select id="ivType">
+              <option value="flat">Flat / Apartment</option>
+              <option value="terraced">Terraced house</option>
+              <option value="semi" selected>Semi-detached house</option>
+              <option value="detached">Detached house</option>
+            </select>
+          </div>
+          <div>
+            <label for="ivBeds">Bedrooms</label>
+            <select id="ivBeds"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select>
+          </div>
+        </div>
+        <label for="ivMode">I'd like to know its</label>
+        <select id="ivMode"><option value="sale">Sale value</option><option value="rent">Monthly rental value</option></select>
+        <button type="submit" class="btn btn-green" style="width:100%;margin-top:18px">Show My Estimate</button>
+      </form>
+    </div>
+    <div class="iv-result" id="ivResult">
+      <h3>Your instant estimate</h3>
+      <div class="range" id="ivRange"></div>
+      <div class="basis" id="ivBasis"></div>
+      <p style="font-size:14px;color:var(--soft);margin-bottom:18px">This is an automated estimate. For a figure you can actually act on, our local team will visit and value it properly — free, no obligation.</p>
+      <a href="#valuation" class="btn btn-green" style="width:100%" data-iv-close>Book My Free Accurate Valuation</a>
+      <button class="btn btn-outline" style="width:100%;margin-top:10px" data-iv-close type="button">Close</button>
+    </div>
+    <p class="iv-note">Preview demo — the live site connects to a valuation data provider and sends every request straight to your inbox as a lead.</p>
+  </div>
+</div>
+
+<script src="properties.js?v=1"></script>
+<script src="site.js?v=2"></script>
 </body>
 </html>

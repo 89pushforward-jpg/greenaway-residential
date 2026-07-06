@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property — Greenaway Residential, East Grinstead & Crawley</title>
+<meta name="description" content="Property details from Greenaway Residential — independent estate and letting agents in East Grinstead and Crawley.">
+<link rel="icon" type="image/png" href="assets/greenaway-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span class="status" id="liveStatus"><span class="dot"></span><span class="txt">Open now</span>&nbsp;<span class="hrs" id="statusHours"></span></span>
+    <span class="addr">88 London Road, East Grinstead &nbsp;·&nbsp; 109 High Street, Crawley</span>
+  </div>
+</div>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo" aria-label="Greenaway Residential — home">
+      <img src="assets/greenaway-logo.png" alt="Greenaway Residential">
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="buying.html">Buying</a>
+      <a href="selling.html">Selling</a>
+      <a href="renting.html">Renting</a>
+      <a href="landlords.html">Landlords</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-outline" href="tel:+441342777977">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>
+        Call
+      </a>
+      <a class="btn btn-green" href="index.html#valuation">Book a Valuation</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero" style="padding:34px 0 30px">
+  <div class="container">
+    <div class="crumb"><a href="index.html">Home</a> / <a href="index.html#properties">Properties</a> / <span id="crumbAddr">Property</span></div>
+  </div>
+</div>
+
+<section style="padding:44px 0 90px" id="propertyRoot">
+  <div class="container">
+
+    <!-- gallery -->
+    <div class="gallery reveal in">
+      <div class="gallery-main">
+        <img id="galMain" src="" alt="Property photo">
+        <span class="stag" id="galStatus"></span>
+        <button class="gal-btn prev" id="galPrev" aria-label="Previous photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="gal-btn next" id="galNext" aria-label="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 6l6 6-6 6"/></svg></button>
+        <span class="gal-count" id="galCount"></span>
+      </div>
+      <div class="gallery-thumbs" id="galThumbs"></div>
+    </div>
+
+    <!-- head row -->
+    <div class="prop-head">
+      <div>
+        <h1 id="pAddr" style="font-size:clamp(26px,3.4vw,38px);letter-spacing:-.4px"></h1>
+        <p id="pSummary" style="color:var(--soft);margin-top:8px;max-width:640px"></p>
+      </div>
+      <div class="prop-price" id="pPrice"></div>
+    </div>
+
+    <div class="prop-cols">
+      <div>
+        <!-- key facts -->
+        <div class="facts" id="pFacts"></div>
+
+        <!-- description -->
+        <h2 style="font-size:22px;margin:36px 0 14px">Description</h2>
+        <div id="pDesc" class="prop-desc"></div>
+
+        <!-- features -->
+        <h2 style="font-size:22px;margin:36px 0 14px">Key features</h2>
+        <ul class="checklist two-col" id="pFeatures"></ul>
+
+        <!-- map -->
+        <h2 style="font-size:22px;margin:36px 0 14px">Location</h2>
+        <div class="map-frame" style="min-height:360px"><iframe id="pMap" title="Property location map" loading="lazy" style="min-height:360px" referrerpolicy="no-referrer-when-downgrade" src=""></iframe></div>
+      </div>
+
+      <!-- sidebar -->
+      <aside>
+        <div class="val-card side-card">
+          <h3>Book a viewing</h3>
+          <p>Tell us when suits you and the team will confirm your appointment.</p>
+          <form id="viewForm">
+            <label for="wName">Name</label>
+            <input id="wName" type="text" placeholder="Jane Smith" required>
+            <div class="val-row">
+              <div><label for="wPhone">Phone</label><input id="wPhone" type="tel" placeholder="07__ ______" required></div>
+              <div><label for="wEmail">Email</label><input id="wEmail" type="email" placeholder="you@email.com" required></div>
+            </div>
+            <label for="wMsg">Message (optional)</label>
+            <input id="wMsg" type="text" placeholder="e.g. weekday evenings suit best">
+            <button type="submit" class="btn btn-green" style="width:100%;margin-top:16px">Request a Viewing</button>
+            <div class="val-success" id="viewSuccess">✓ Thank you — our lettings team will be in touch shortly to confirm your viewing.</div>
+          </form>
+          <div class="side-call">
+            <span>Prefer to talk?</span>
+            <a href="tel:+441342777977" class="btn btn-outline" style="width:100%"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg> 01342 777977</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="container">
+    <div>
+      <h2>Not quite the one?</h2>
+      <p>Tell us what you're looking for and we'll keep an eye out for you.</p>
+    </div>
+    <div class="btns">
+      <a class="btn btn-white" href="index.html#properties">More properties</a>
+      <a class="btn btn-ghost" href="tel:+441342777977">Call 01342 777977</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-logo"><img src="assets/greenaway-logo.png" alt="Greenaway Residential"></span>
+        <p style="max-width:330px">Since 2000, Greenaway Residential's team has helped thousands of individuals to buy, sell, rent, or let homes in the West Sussex, Surrey, and Kent areas.</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="buying.html">Buying</a></li>
+          <li><a href="selling.html">Selling</a></li>
+          <li><a href="renting.html">Renting</a></li>
+          <li><a href="landlords.html">Landlords</a></li>
+          <li><a href="index.html#valuation">Book a Valuation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="tel:+441342777977">East Grinstead: 01342 777977</a></li>
+          <li><a href="tel:+441293561188">Crawley: 01293 561188</a></li>
+          <li><a href="tel:+441293561789">Property Management: 01293 561789</a></li>
+          <li><a href="mailto:eastgrinstead@greenawayresidential.com">eastgrinstead@greenawayresidential.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Greenaway Residential Estate Agents And Letting Agents. All rights reserved.</span>
+      <span><a href="admin.html">Admin</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="call" href="tel:+441342777977"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>Call</a>
+  <a class="val" href="#viewForm">Book a Viewing</a>
+</div>
+
+<script src="properties.js?v=1"></script>
+<script src="site.js?v=2"></script>
+<script>
+(function(){
+  var id = new URLSearchParams(location.search).get('id');
+  var p = window.GRProps.get(id) || window.GRProps.getAll()[0];
+  if(!p){ document.getElementById('propertyRoot').innerHTML = '<div class="container"><p>Property not found. <a href="index.html#properties">Back to properties</a></p></div>'; return; }
+
+  document.title = p.address + ' — Greenaway Residential';
+  document.getElementById('crumbAddr').textContent = p.address;
+  document.getElementById('pAddr').textContent = p.address;
+  document.getElementById('pSummary').textContent = p.summary || '';
+  document.getElementById('pPrice').innerHTML = window.GRProps.priceLabel(p);
+  var st = document.getElementById('galStatus');
+  st.textContent = p.status;
+  if(/agreed|sold/i.test(p.status)) st.classList.add('agreed');
+
+  var facts = [
+    ['Type', p.type],
+    ['Bedrooms', p.beds],
+    ['Bathrooms', p.baths],
+    ['Reception rooms', p.receptions],
+    ['Available', p.available],
+    ['Furnishing', p.furnished]
+  ].filter(function(f){ return f[1]!==undefined && f[1]!==null && f[1]!==''; });
+  document.getElementById('pFacts').innerHTML = facts.map(function(f){
+    return '<div class="fact"><span>'+f[0]+'</span><b>'+f[1]+'</b></div>';
+  }).join('');
+
+  document.getElementById('pDesc').innerHTML = (p.description||[]).map(function(t){ return '<p>'+t+'</p>'; }).join('');
+  document.getElementById('pFeatures').innerHTML = (p.features||[]).map(function(f){
+    return '<li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>'+f+'</li>';
+  }).join('');
+  document.getElementById('pMap').src = 'https://www.google.com/maps?q=' + encodeURIComponent(p.mapQ || (p.address + ', East Grinstead')) + '&output=embed';
+
+  /* gallery */
+  var photos = p.photos && p.photos.length ? p.photos : ['assets/East-Grinstead-2200x1237.jpg'];
+  var idx = 0;
+  var main = document.getElementById('galMain'), count = document.getElementById('galCount'), thumbs = document.getElementById('galThumbs');
+  function show(i){
+    idx = (i + photos.length) % photos.length;
+    main.src = photos[idx];
+    count.textContent = (idx+1) + ' of ' + photos.length;
+    thumbs.querySelectorAll('img').forEach(function(t,k){ t.classList.toggle('on', k===idx); });
+  }
+  thumbs.innerHTML = photos.map(function(src,i){ return '<img src="'+src+'" alt="Photo '+(i+1)+'" data-i="'+i+'">'; }).join('');
+  thumbs.addEventListener('click', function(e){ if(e.target.dataset.i) show(Number(e.target.dataset.i)); });
+  document.getElementById('galPrev').addEventListener('click', function(){ show(idx-1); });
+  document.getElementById('galNext').addEventListener('click', function(){ show(idx+1); });
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowLeft') show(idx-1); if(e.key==='ArrowRight') show(idx+1); });
+  show(0);
+
+  /* viewing form (demo — stores enquiry for the admin inbox) */
+  document.getElementById('viewForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    window.GRProps.addEnquiry({
+      kind: 'viewing',
+      property: p.address + ' (' + (p.ref||p.id) + ')',
+      name: document.getElementById('wName').value,
+      phone: document.getElementById('wPhone').value,
+      email: document.getElementById('wEmail').value,
+      msg: document.getElementById('wMsg').value
+    });
+    document.getElementById('viewSuccess').style.display = 'block';
+    e.target.querySelector('button[type=submit]').textContent = 'Request Sent ✓';
+  });
+})();
+</script>
+</body>
+</html>
