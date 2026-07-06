@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
 
@@ -56,7 +56,7 @@
     <!-- gallery -->
     <div class="gallery reveal in">
       <div class="gallery-main">
-        <img id="galMain" src="" alt="Property photo">
+        <div class="gal-track" id="galTrack"></div>
         <span class="stag" id="galStatus"></span>
         <button class="gal-btn prev" id="galPrev" aria-label="Previous photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M15 18l-6-6 6-6"/></svg></button>
         <button class="gal-btn next" id="galNext" aria-label="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -206,13 +206,16 @@
   }).join('');
   document.getElementById('pMap').src = 'https://www.google.com/maps?q=' + encodeURIComponent(p.mapQ || (p.address + ', East Grinstead')) + '&output=embed';
 
-  /* gallery */
+  /* gallery — sliding track with smooth animation */
   var photos = p.photos && p.photos.length ? p.photos : ['assets/East-Grinstead-2200x1237.jpg'];
   var idx = 0;
-  var main = document.getElementById('galMain'), count = document.getElementById('galCount'), thumbs = document.getElementById('galThumbs');
+  var track = document.getElementById('galTrack'), count = document.getElementById('galCount'), thumbs = document.getElementById('galThumbs');
+  track.innerHTML = photos.map(function(src,i){
+    return '<img src="'+src+'" alt="Property photo '+(i+1)+'"'+(i>0?' loading="lazy"':'')+'>';
+  }).join('');
   function show(i){
     idx = (i + photos.length) % photos.length;
-    main.src = photos[idx];
+    track.style.transform = 'translateX(-' + (idx*100) + '%)';
     count.textContent = (idx+1) + ' of ' + photos.length;
     thumbs.querySelectorAll('img').forEach(function(t,k){ t.classList.toggle('on', k===idx); });
   }
@@ -221,6 +224,14 @@
   document.getElementById('galPrev').addEventListener('click', function(){ show(idx-1); });
   document.getElementById('galNext').addEventListener('click', function(){ show(idx+1); });
   document.addEventListener('keydown', function(e){ if(e.key==='ArrowLeft') show(idx-1); if(e.key==='ArrowRight') show(idx+1); });
+  /* swipe on touch devices */
+  var sx=null;
+  track.addEventListener('touchstart', function(e){ sx=e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    if(sx===null) return;
+    var dx=e.changedTouches[0].clientX-sx; sx=null;
+    if(Math.abs(dx)>40) show(dx<0 ? idx+1 : idx-1);
+  }, {passive:true});
   show(0);
 
   /* viewing form (demo — stores enquiry for the admin inbox) */
