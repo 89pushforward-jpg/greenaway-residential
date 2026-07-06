@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Greenaway Residential — Estate & Letting Agents, East Grinstead & Crawley</title>
-<meta name="description" content="Greenaway Residential — independent estate and letting agents since 2000. Sales, lettings, property management and free valuations across East Grinstead, Crawley and surrounding areas. Call 01342 777977.">
+<title>Greenaway Residential — Independent Estate Agents in East Grinstead & Crawley</title>
+<meta name="description" content="Independent estate and letting agents since 2000. Sales, lettings, property management and free valuations across East Grinstead, Crawley and surrounding areas. Call 01342 777977.">
+<link rel="canonical" href="https://greenawayresidential.com/">
+<link rel="icon" type="image/png" href="assets/greenaway-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -17,6 +20,7 @@
   "email": "eastgrinstead@greenawayresidential.com",
   "url": "https://greenawayresidential.com",
   "foundingDate": "2000",
+  "logo": "assets/greenaway-logo.png",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "88 London Road",
@@ -25,252 +29,223 @@
     "postalCode": "RH19 1EP",
     "addressCountry": "GB"
   },
-  "areaServed": ["East Grinstead","Crawley","Horley","Haywards Heath","Burgess Hill","Crowborough","Uckfield"]
+  "areaServed": ["East Grinstead","Crawley","Horley","Redhill","Reigate","Horsham","Haywards Heath","Burgess Hill","Crowborough"]
 }
 </script>
-<style>
-:root{
-  --green:#123f2e;
-  --green-2:#1b5940;
-  --green-bright:#2e8c62;
-  --gold:#c8a04b;
-  --paper:#f8f7f3;
-  --paper-2:#efedе6;
-  --paper-2:#efede6;
-  --ink:#1c2420;
-  --ink-soft:#47524b;
-  --muted:#75807a;
-  --line:#e3e4dd;
-  --card:#ffffff;
-  --red:#b23838;
-  --radius:8px;
-  --shadow:0 14px 40px rgba(18,63,46,.1);
-  --font-display:"Libre Baskerville",serif;
-  --font-body:"Inter",sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:92px}
-body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-ul{list-style:none}
-.container{max-width:1160px;margin:0 auto;padding:0 22px}
-section{padding:90px 0}
-h1,h2,h3{font-family:var(--font-display);line-height:1.2}
-h2{font-size:clamp(28px,3.8vw,40px);color:var(--green);font-weight:700}
-.kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.section-head{max-width:660px;margin-bottom:46px}
-.section-head p{color:var(--muted);margin-top:14px;font-size:16px}
-
-/* topbar */
-.topbar{background:var(--green);color:#bcd2c6;font-size:12.5px;padding:8px 0}
-.topbar .container{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.topbar a{font-weight:700;color:#fff}
-@media(max-width:720px){.topbar .offices{display:none}}
-
-/* header */
-header{position:sticky;top:0;z-index:60;background:rgba(248,247,243,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:84px}
-.logo{display:flex;align-items:center;gap:12px}
-.logo-mark{width:44px;height:44px;border-radius:8px;background:var(--green);display:grid;place-items:center;flex-shrink:0}
-.logo-text{font-family:var(--font-display);font-weight:700;font-size:20px;line-height:1.1;color:var(--green)}
-.logo-text small{display:block;font-family:var(--font-body);font-weight:700;font-size:9px;letter-spacing:2.6px;color:var(--gold);margin-top:3px;text-transform:uppercase}
-.nav-links{display:flex;gap:28px;font-weight:600;font-size:14px}
-.nav-links a{position:relative;padding:6px 0;color:var(--ink-soft)}
-.nav-links a:hover{color:var(--green)}
-.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);transition:width .25s}
-.nav-links a:hover::after{width:100%}
-.nav-cta{display:flex;align-items:center;gap:12px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:14.5px;padding:14px 26px;border-radius:var(--radius);border:none;cursor:pointer;transition:.2s;font-family:var(--font-body)}
-.btn-gold{background:var(--gold);color:#241b06}
-.btn-gold:hover{background:#b58c39}
-.btn-green{background:var(--green);color:#fff}
-.btn-green:hover{background:var(--green-2)}
-.btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.45);color:#fff}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
-.btn-phone{background:transparent;border:2px solid var(--line);color:var(--green);padding:12px 20px}
-.btn-phone:hover{border-color:var(--gold)}
-.burger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;flex-direction:column;justify-content:center;align-items:center;gap:5px}
-.burger span{width:24px;height:2px;background:var(--green)}
-@media(max-width:1060px){
-  .nav-links{position:fixed;inset:84px 0 auto 0;background:var(--paper);flex-direction:column;gap:0;padding:10px 22px 22px;border-bottom:1px solid var(--line);display:none}
-  .nav-links.open{display:flex}
-  .nav-links a{padding:15px 0;border-bottom:1px solid var(--line);font-size:16px}
-  .burger{display:flex}
-  .nav-cta .btn-phone{display:none}
-}
-@media(max-width:560px){
-  .logo-text{font-size:16px}
-  .logo-text small{font-size:7.5px;letter-spacing:1.8px}
-  .logo-mark{width:38px;height:38px}
-  .nav-cta .btn-gold{padding:11px 14px;font-size:13px;white-space:nowrap}
-}
-
-/* hero */
-.hero{background:
-  radial-gradient(760px 440px at 88% -10%,rgba(200,160,75,.2) 0%,transparent 60%),
-  linear-gradient(165deg,var(--green) 0%,#0c2c20 100%);
-  color:#fff;padding:82px 0 90px;overflow:hidden;position:relative}
-.hero::after{content:"";position:absolute;left:-70px;bottom:-110px;width:340px;height:340px;border-radius:50%;border:48px solid rgba(255,255,255,.04);pointer-events:none}
-.hero .container{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:54px;align-items:center;position:relative;z-index:1}
-.hero .container>*{min-width:0}
-.badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(200,160,75,.4);border-radius:99px;padding:7px 15px;font-size:13px;font-weight:600;color:#e5ddc9}
-.badge .star{color:var(--gold)}
-.hero h1{font-size:clamp(34px,4.8vw,56px);color:#fff;font-weight:700}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero .sub{margin:18px 0 28px;color:#aecbbb;font-size:17px;max-width:520px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
-.hero-points{display:flex;flex-wrap:wrap;gap:24px;margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.15)}
-.hero-point{font-size:13.5px;font-weight:600;color:#cfe0d5}
-@media(max-width:960px){.hero .container{grid-template-columns:minmax(0,1fr);gap:40px}.hero{padding:56px 0 64px}}
-
-/* valuation card */
-.val-card{background:var(--paper);border-radius:16px;padding:32px;color:var(--ink);box-shadow:0 30px 80px rgba(3,18,12,.55);border-top:4px solid var(--gold)}
-.val-card h3{font-family:var(--font-display);font-size:22px;color:var(--green);margin-bottom:4px}
-.val-card>p{font-size:13.5px;color:var(--muted);margin-bottom:18px}
-.val-card label{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px;color:var(--ink-soft);margin-bottom:6px}
-.val-card input,.val-card select{width:100%;padding:13px;border-radius:var(--radius);border:1.5px solid var(--line);font-family:var(--font-body);font-size:15px;background:#fff;margin-bottom:12px}
-.val-card input:focus,.val-card select:focus{outline:none;border-color:var(--green-bright)}
-.val-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.val-note{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);margin:6px 0 12px}
-.val-note b{color:var(--green)}
-.val-success{display:none;background:#e9f4ed;border:1px solid #c2ddcc;color:#1c5e3c;padding:14px 16px;border-radius:var(--radius);font-weight:600;font-size:14px;margin-top:6px}
-@media(max-width:560px){.val-card{padding:24px 20px}.val-row{grid-template-columns:1fr}}
-
-/* properties */
-.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.prop{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s}
-.prop:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.prop .ph{position:relative;aspect-ratio:4/2.9;overflow:hidden}
-.prop .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.prop:hover .ph img{transform:scale(1.05)}
-.prop .ph .stag{position:absolute;top:14px;left:14px;background:var(--green);color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;padding:5px 12px;border-radius:99px;text-transform:uppercase}
-.prop .ph .stag.let{background:var(--gold);color:#241b06}
-.prop .body{padding:20px}
-.prop .price{font-family:var(--font-display);font-size:22px;color:var(--green);font-weight:700}
-.prop .addr{font-weight:700;font-size:14.5px;margin-top:4px}
-.prop .meta{display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);font-weight:600}
-@media(max-width:960px){.props-grid{grid-template-columns:1fr}}
-.props-note{margin-top:22px;text-align:center;font-size:13px;color:var(--muted)}
-
-/* services */
-.services{background:var(--green);color:#fff}
-.services h2{color:#fff}
-.services .section-head p{color:#aecbbb}
-.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.svc{border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:28px 24px;background:rgba(255,255,255,.04)}
-.svc .em{font-size:30px;display:block;margin-bottom:12px}
-.svc h4{font-family:var(--font-display);font-size:17px;color:#fff;margin-bottom:8px}
-.svc p{font-size:13.5px;color:#aecbbb}
-@media(max-width:960px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
-
-/* reviews */
-.review-summary{display:flex;align-items:center;gap:18px;margin-bottom:36px;flex-wrap:wrap}
-.review-score{font-family:var(--font-display);font-size:58px;font-weight:700;line-height:1;color:var(--green)}
-.review-stars{color:var(--gold);font-size:21px;letter-spacing:2px}
-.review-meta{font-size:14px;color:var(--muted)}
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.review-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:28px}
-.review-card .stars{color:var(--gold);letter-spacing:2px;margin-bottom:12px;font-size:15px}
-.review-card p{font-size:14.5px;color:var(--ink-soft);margin-bottom:16px;font-style:italic}
-.review-card .who{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--green)}
-@media(max-width:960px){.reviews-grid{grid-template-columns:1fr}}
-
-/* offices */
-.offices .container{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
-.contact-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:30px;margin-bottom:18px}
-.contact-card h3{font-family:var(--font-display);font-size:19px;color:var(--green);margin-bottom:16px}
-.contact-line{display:flex;gap:14px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
-.contact-line:last-child{border-bottom:none}
-.contact-line svg{flex-shrink:0;margin-top:2px}
-.contact-line a{font-weight:700;color:var(--green)}
-.contact-line a:hover{color:var(--gold)}
-.map-frame{border-radius:12px;overflow:hidden;border:1px solid var(--line);min-height:470px;box-shadow:var(--shadow)}
-.map-frame iframe{width:100%;height:100%;border:0;min-height:470px}
-@media(max-width:960px){.offices .container{grid-template-columns:minmax(0,1fr)}.map-frame{min-height:340px}.map-frame iframe{min-height:340px}}
-
-/* footer */
-footer{background:#0c2c20;color:#8fae9d;padding:56px 0 100px;font-size:14px}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:40px}
-footer h4{color:#fff;font-family:var(--font-display);font-size:17px;margin-bottom:14px}
-footer li{padding:5px 0}
-footer a:hover{color:var(--gold)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
-@media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
-
-/* sticky mobile bar */
-.mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:70;display:none;grid-template-columns:1.1fr 1fr;background:#0c2c20;border-top:1px solid rgba(255,255,255,.12);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px}
-.mobile-bar a{display:flex;align-items:center;justify-content:center;gap:7px;padding:13px 6px;border-radius:var(--radius);font-weight:700;font-size:13px}
-.mobile-bar .call{background:var(--gold);color:#241b06}
-.mobile-bar .val{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
-@media(max-width:960px){.mobile-bar{display:grid}footer{padding-bottom:130px}}
-
-/* reveal */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-</style>
 </head>
 <body>
 
-<!-- topbar -->
+<!-- top bar — live open/closed status -->
 <div class="topbar">
   <div class="container">
-    <div class="offices">East Grinstead: 01342 777977 · Crawley: 01293 561188 · Property Management: 01293 561789</div>
-    <a href="mailto:eastgrinstead@greenawayresidential.com">eastgrinstead@greenawayresidential.com</a>
+    <span class="status" id="liveStatus"><span class="dot"></span><span class="txt">Open now</span>&nbsp;<span class="hrs" id="statusHours"></span></span>
+    <span class="addr">88 London Road, East Grinstead &nbsp;·&nbsp; 109 High Street, Crawley</span>
   </div>
 </div>
 
 <!-- header -->
 <header>
   <div class="container nav">
-    <a href="#" class="logo">
-      <span class="logo-mark">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c8a04b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
-      </span>
-      <span class="logo-text">Greenaway<br>Residential<small>Estate &amp; Letting Agents</small></span>
+    <a href="index.html" class="logo" aria-label="Greenaway Residential — home">
+      <img src="assets/greenaway-logo.png" alt="Greenaway Residential">
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="#properties">Properties</a>
-      <a href="#services">Sell &amp; Let</a>
-      <a href="#valuation">Free Valuation</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#offices">Our Offices</a>
+      <a href="buying.html">Buying</a>
+      <a href="selling.html">Selling</a>
+      <a href="renting.html">Renting</a>
+      <a href="landlords.html">Landlords</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-phone" href="tel:+441342777977">01342 777977</a>
-      <a class="btn btn-gold" href="#valuation">Free Valuation</a>
+      <a class="btn btn-outline" href="tel:+441342777977">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>
+        Call
+      </a>
+      <a class="btn btn-green" href="#valuation">Book a Valuation</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 
 <!-- hero -->
-<div class="hero" id="valuation">
+<div class="hero">
+  <img class="bg" src="assets/East-Grinstead-2200x1237.jpg" alt="East Grinstead viaduct, West Sussex">
   <div class="container">
-    <div>
-      <div class="badge-row">
-        <span class="badge"><span class="star">★</span> 4.9 rated local agent</span>
-        <span class="badge">🏡 Independent since 2000</span>
-        <span class="badge">🔒 The Property Ombudsman</span>
+    <div class="hero-badges">
+      <span class="hero-badge"><span class="star">★</span> 4.9 rated by our clients</span>
+      <span class="hero-badge">Independent since 2000</span>
+    </div>
+    <h1>Independent Estate Agents in East Grinstead, West Sussex</h1>
+    <p class="sub">A reassuringly safe area, great schools, and stunning Medieval and Tudor architecture. Whether you're buying, selling, renting or letting — you're in the safest of hands.</p>
+    <div class="hero-actions">
+      <a class="btn btn-green" href="#valuation">Book a Valuation</a>
+      <a class="btn btn-ghost" href="#properties">View Properties</a>
+    </div>
+  </div>
+</div>
+
+<!-- property search bar -->
+<div class="searchbar-wrap">
+  <div class="container">
+    <form class="searchbar" id="searchForm">
+      <div class="seg" id="segToggle">
+        <button type="button" class="on" data-mode="buy">Buy</button>
+        <button type="button" data-mode="rent">Rent</button>
       </div>
-      <h1>Your home, sold and let<br>by <em>people you can name.</em></h1>
-      <p class="sub">Independent estate and letting agents since 2000 — two local offices, one founder still on the phones, and a team your neighbours recommend by first name.</p>
-      <div class="hero-actions">
-        <a class="btn btn-gold" href="#val-form">Get My Free Valuation</a>
-        <a class="btn btn-ghost" href="#properties">View Properties</a>
+      <div class="field">
+        <label for="sPrice">Max price</label>
+        <select id="sPrice"></select>
       </div>
-      <div class="hero-points">
-        <div class="hero-point">✓ Listed on Rightmove &amp; Zoopla</div>
-        <div class="hero-point">✓ Sales · lettings · full management</div>
-        <div class="hero-point">✓ East Grinstead &amp; Crawley offices</div>
+      <div class="field">
+        <label for="sBeds">Min bedrooms</label>
+        <select id="sBeds">
+          <option>Any</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-green">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        Search
+      </button>
+    </form>
+    <p class="search-note" id="searchNote">Preview demo — on the live site this searches your full sales &amp; lettings portfolio.</p>
+  </div>
+</div>
+
+<!-- featured properties -->
+<section id="properties">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Latest properties</span>
+      <h2>Featured properties</h2>
+      <p>Your real, current listings — on the live site they update automatically.</p>
+    </div>
+    <div class="props-grid">
+      <article class="prop reveal" data-mode="rent">
+        <a href="https://greenawayresidential.com/property/eag260121-london-road/" target="_blank" rel="noopener">
+          <div class="ph"><img src="assets/EAG260121_08-1200x800.jpg" alt="Flat to let on London Road, East Grinstead" loading="lazy"><span class="stag">To Let</span></div>
+          <div class="body">
+            <div class="price">£1,125 <small>monthly</small></div>
+            <div class="addr">London Road, East Grinstead</div>
+            <div class="meta"><span>1 bed</span><span>1 bath</span><span>1 reception</span></div>
+          </div>
+        </a>
+      </article>
+      <article class="prop reveal" data-mode="rent">
+        <a href="https://greenawayresidential.com/property/eag260117-wood-street/" target="_blank" rel="noopener">
+          <div class="ph"><img src="assets/EAG260117_02-1200x800.jpg" alt="Flat on Wood Street, East Grinstead — let agreed" loading="lazy"><span class="stag agreed">Let Agreed</span></div>
+          <div class="body">
+            <div class="price">£1,260 <small>monthly</small></div>
+            <div class="addr">Wood Street, East Grinstead</div>
+            <div class="meta"><span>1 bed</span><span>1 bath</span><span>1 reception</span></div>
+          </div>
+        </a>
+      </article>
+      <article class="prop reveal" data-mode="rent">
+        <a href="https://greenawayresidential.com/property/eag260116-wood-street/" target="_blank" rel="noopener">
+          <div class="ph"><img src="assets/EAG260116_06-1200x800.jpg" alt="Flat to let on Wood Street, East Grinstead" loading="lazy"><span class="stag">To Let</span></div>
+          <div class="body">
+            <div class="price">£1,300 <small>monthly</small></div>
+            <div class="addr">Wood Street, East Grinstead</div>
+            <div class="meta"><span>1 bed</span><span>1 bath</span><span>1 reception</span></div>
+          </div>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- intro -->
+<section class="intro">
+  <div class="container intro-grid">
+    <div class="reveal">
+      <span class="kicker">Welcome</span>
+      <h2>Let's get moving!</h2>
+    </div>
+    <div class="reveal">
+      <p>Pop in to our East Grinstead estate agents and enjoy a warm welcome and a tonne of local knowledge and expertise. Whether you're looking to <b>buy, sell, rent, or let</b>, we have more than twenty years' experience and thousands of property transactions under our belt.</p>
+      <p>Located close to Ashdown Forest — the legendary home of Winnie the Pooh and the Bluebell Railway — East Grinstead enjoys a reputation for being a great place for families to lay down roots, and a perfect location for commuters within easy reach of London, East Croydon and Gatwick airport.</p>
+      <p><b>Get in touch today</b> or pop into our office for a coffee and a friendly chat. We'd love to help you achieve your property ambitions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- services -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">What we do</span>
+      <h2>Sales, lettings and everything in between</h2>
+    </div>
+    <div class="svc-grid">
+      <a class="svc reveal" href="buying.html">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></span>
+        <h4>Buying</h4>
+        <p>From "which areas?" to keys in hand — how to search, view and offer with confidence.</p>
+        <span class="go">Buying guide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc reveal" href="selling.html">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
+        <h4>Selling</h4>
+        <p>Honest pricing, wide marketing and hands-on sales progression to keep your move on track.</p>
+        <span class="go">Selling guide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc reveal" href="renting.html">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.6 7.6a5.5 5.5 0 11-7.8 7.8 5.5 5.5 0 017.8-7.8zm0 0L19 4m-3.5 3.5L18 10"/></svg></span>
+        <h4>Renting</h4>
+        <p>Looking for a home to rent in East Grinstead, Crawley or nearby? We'll guide you through it.</p>
+        <span class="go">Renting guide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="svc reveal" href="landlords.html">
+        <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg></span>
+        <h4>Landlords</h4>
+        <p>Tenant find, rent collection or fully managed — three clear services with clear fees.</p>
+        <span class="go">Landlord services <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- google reviews -->
+<section class="greviews" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Reviews</span>
+      <h2>What our clients say on Google</h2>
+    </div>
+    <div class="grating reveal">
+      <span class="glogo">
+        <svg width="30" height="30" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3l5.7-5.7C34.2 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 8 3l5.7-5.7C34.2 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C36.9 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
+      </span>
+      <span class="score">4.9</span>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="meta">Rated by our clients across Google &amp; independent review sites · <a href="https://www.google.com/search?q=Greenaway+Residential+East+Grinstead+reviews" target="_blank" rel="noopener">Read our reviews on Google →</a></div>
       </div>
     </div>
-    <form class="val-card" id="val-form">
-      <h3>What's your home worth?</h3>
-      <p>Free, no-obligation valuation — a real local expert, not an algorithm.</p>
+    <div class="reviews-grid">
+      <div class="review-card reveal"><div class="stars">★★★★★</div><p>"Excellent service all through the process. Michael went above and beyond to help."</p><div class="who">Jane Crutchfield <small>Google review</small></div></div>
+      <div class="review-card reveal"><div class="stars">★★★★★</div><p>"There were lots of complications and delays selling the property but Greenaway Residential went over and above to help."</p><div class="who">Isy Parker <small>Google review</small></div></div>
+      <div class="review-card reveal"><div class="stars">★★★★★</div><p>"Great patience, due diligence and diplomacy — Michael and Vicky are a credit to the firm."</p><div class="who">Verified seller <small>Google review</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- valuation -->
+<section class="valuation" id="valuation">
+  <div class="container val-grid">
+    <div class="reveal">
+      <span class="kicker">Book a valuation</span>
+      <h2>What's your home worth?</h2>
+      <div class="val-points">
+        <div class="val-point"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span>Free, no-obligation market appraisal from a local expert — not a postcode algorithm.</span></div>
+        <div class="val-point"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span>Selling or letting — we'll advise the right price to attract genuine interest and the best result.</span></div>
+        <div class="val-point"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg><span>Since 2000 we've helped thousands of people move across West Sussex, Surrey and Kent.</span></div>
+      </div>
+    </div>
+    <form class="val-card reveal" id="valForm">
+      <h3>Request your free valuation</h3>
+      <p>A real local expert will call you back to arrange a convenient time.</p>
       <label for="vAddr">Property address or postcode</label>
       <input id="vAddr" type="text" placeholder="e.g. 12 Ship Street, RH19" required>
       <div class="val-row">
@@ -281,101 +256,39 @@ footer a:hover{color:var(--gold)}
         <div><label for="vEmail">Email</label><input id="vEmail" type="email" placeholder="you@email.com" required></div>
         <div><label for="vType">I'm looking to</label><select id="vType"><option>Sell</option><option>Let</option><option>Both / not sure</option></select></div>
       </div>
-      <div class="val-note">🔒 <span>Submitted <b>securely over HTTPS</b> — straight to our local team, never sold on.</span></div>
+      <div class="val-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><span>Submitted <b>securely over HTTPS</b> — straight to our local team, never sold on.</span></div>
       <button type="submit" class="btn btn-green" style="width:100%">Request Free Valuation</button>
-      <div class="val-success" id="valSuccess">✓ Thank you — Michael or one of the team will call you shortly to arrange your valuation.</div>
+      <div class="val-success" id="valSuccess">✓ Thank you — one of the team will call you shortly to arrange your valuation.</div>
     </form>
-  </div>
-</div>
-
-<!-- properties -->
-<section id="properties">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="kicker">Featured properties</span>
-      <h2>A taste of what's on the market</h2>
-      <p>Live listings pull straight from your Rightmove feed on the production site — always current, never stale.</p>
-    </div>
-    <div class="props-grid">
-      <div class="prop reveal">
-        <div class="ph"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=60&auto=format&fit=crop" alt="Detached family home" loading="lazy"><span class="stag">For Sale</span></div>
-        <div class="body"><div class="price">£675,000</div><div class="addr">4-bed detached · Ship Street area</div><div class="meta"><span>🛏 4 beds</span><span>🛁 2 baths</span><span>🚗 Garage</span></div></div>
-      </div>
-      <div class="prop reveal">
-        <div class="ph"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=700&q=60&auto=format&fit=crop" alt="Semi-detached home" loading="lazy"><span class="stag">For Sale</span></div>
-        <div class="body"><div class="price">£465,000</div><div class="addr">3-bed semi · walking distance to station</div><div class="meta"><span>🛏 3 beds</span><span>🛁 1 bath</span><span>🌳 Garden</span></div></div>
-      </div>
-      <div class="prop reveal">
-        <div class="ph"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=60&auto=format&fit=crop" alt="Modern home to let" loading="lazy"><span class="stag let">To Let</span></div>
-        <div class="body"><div class="price">£1,850 pcm</div><div class="addr">2-bed modern home · Crawley Down</div><div class="meta"><span>🛏 2 beds</span><span>🛁 2 baths</span><span>🅿 Parking</span></div></div>
-      </div>
-    </div>
-    <p class="props-note">Sample listings for preview — the live site shows your actual Rightmove/Zoopla portfolio, updated automatically.</p>
-  </div>
-</section>
-
-<!-- services -->
-<section class="services" id="services">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="kicker">What we do</span>
-      <h2>Everything between "thinking of moving" and "keys handed over"</h2>
-    </div>
-    <div class="svc-grid">
-      <div class="svc reveal"><span class="em">🏡</span><h4>Residential Sales</h4><p>Honest pricing, professional marketing on Rightmove &amp; Zoopla, and a named contact from listing to completion.</p></div>
-      <div class="svc reveal"><span class="em">🔑</span><h4>Lettings</h4><p>Referenced tenants, compliant tenancies, and straight answers for landlords.</p></div>
-      <div class="svc reveal"><span class="em">🧰</span><h4>Property Management</h4><p>Full management from our dedicated team — rent, repairs, inspections, renewals.</p></div>
-      <div class="svc reveal"><span class="em">📈</span><h4>Valuations</h4><p>Free market appraisals from people who've sold on your street — not a postcode algorithm.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- reviews -->
-<section id="reviews">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="kicker">Reviews</span>
-      <h2>Recommended by name</h2>
-    </div>
-    <div class="review-summary reveal">
-      <span class="review-score">4.9</span>
-      <div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-meta">East Grinstead branch rating on GetAgent · 100% recommended on allAgents</div>
-      </div>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card reveal"><div class="stars">★★★★★</div><p>"Excellent service all through the process. Michael went above and beyond to help."</p><div class="who">Jane Crutchfield</div></div>
-      <div class="review-card reveal"><div class="stars">★★★★★</div><p>"There were lots of complications and delays selling the property but Greenaway Residential went over and above to help."</p><div class="who">Isy Parker</div></div>
-      <div class="review-card reveal"><div class="stars">★★★★★</div><p>"Great patience, due diligence and diplomacy — Michael and Vicky are a credit to the firm."</p><div class="who">Verified seller review</div></div>
-    </div>
   </div>
 </section>
 
 <!-- offices -->
-<section class="offices" id="offices" style="background:var(--paper-2)">
+<section class="intro" id="contact">
   <div class="container">
-    <div>
-      <div class="section-head reveal" style="margin-bottom:28px">
-        <span class="kicker">Our offices</span>
-        <h2>Two offices, one standard</h2>
-      </div>
-      <div class="contact-card reveal">
-        <h3>East Grinstead</h3>
-        <div class="contact-line"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c8a04b" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>88 London Road,<br>East Grinstead, West Sussex, RH19 1EP</span></div>
-        <div class="contact-line"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c8a04b" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg><a href="tel:+441342777977">01342 777977</a></div>
-        <div class="contact-line"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c8a04b" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg><a href="mailto:eastgrinstead@greenawayresidential.com">eastgrinstead@greenawayresidential.com</a></div>
-      </div>
-      <div class="contact-card reveal">
-        <h3>Crawley &amp; Property Management</h3>
-        <div class="contact-line"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c8a04b" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Boscobel House, 109 High Street,<br>Crawley, RH10 1DD</span></div>
-        <div class="contact-line"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c8a04b" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg><a href="tel:+441293561188">01293 561188</a> · management <a href="tel:+441293561789">01293 561789</a></div>
-        <div class="contact-line"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c8a04b" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg><a href="mailto:crawley@greenawayresidential.com">crawley@greenawayresidential.com</a></div>
-      </div>
+    <div class="section-head reveal">
+      <span class="kicker">Contact us</span>
+      <h2>Two offices, one standard</h2>
     </div>
-    <div class="map-frame reveal">
-      <iframe title="Map — Greenaway Residential, 88 London Road, East Grinstead" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Greenaway+Residential,+88+London+Road,+East+Grinstead+RH19+1EP&output=embed"></iframe>
+    <div class="offices-grid">
+      <div>
+        <div class="contact-card reveal">
+          <h3>East Grinstead Office</h3>
+          <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>88 London Road, East Grinstead,<br>West Sussex, RH19 1EP</span></div>
+          <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg><a href="tel:+441342777977">01342 777977</a></div>
+          <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg><a href="mailto:eastgrinstead@greenawayresidential.com">eastgrinstead@greenawayresidential.com</a></div>
+        </div>
+        <div class="contact-card reveal">
+          <h3>Crawley Office &amp; Property Management</h3>
+          <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Boscobel House, 109 High Street,<br>Crawley, West Sussex, RH10 1DD</span></div>
+          <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg><a href="tel:+441293561188">01293 561188</a> · management <a href="tel:+441293561789">01293 561789</a></div>
+          <div class="contact-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#347c35" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg><a href="mailto:crawley@greenawayresidential.com">crawley@greenawayresidential.com</a></div>
+        </div>
+      </div>
+      <div class="map-frame reveal">
+        <iframe title="Map — Greenaway Residential, 88 London Road, East Grinstead" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Greenaway+Residential,+88+London+Road,+East+Grinstead+RH19+1EP&output=embed"></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -385,19 +298,17 @@ footer a:hover{color:var(--gold)}
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href="#" class="logo" style="margin-bottom:16px">
-          <span class="logo-text" style="color:#fff">Greenaway Residential<small style="color:var(--gold)">Estate &amp; Letting Agents · Est. 2000</small></span>
-        </a>
-        <p style="max-width:300px;margin-top:10px">Independent estate and letting agents serving East Grinstead, Crawley and the Sussex/Surrey borders since 2000.</p>
+        <span class="footer-logo"><img src="assets/greenaway-logo.png" alt="Greenaway Residential"></span>
+        <p style="max-width:330px">Since 2000, Greenaway Residential's team has helped thousands of individuals to buy, sell, rent, or let homes in the West Sussex, Surrey, and Kent areas.</p>
       </div>
       <div>
         <h4>Quick links</h4>
         <ul>
-          <li><a href="#properties">Properties</a></li>
-          <li><a href="#services">Sales &amp; lettings</a></li>
-          <li><a href="#valuation">Free valuation</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#offices">Our offices</a></li>
+          <li><a href="buying.html">Buying</a></li>
+          <li><a href="selling.html">Selling</a></li>
+          <li><a href="renting.html">Renting</a></li>
+          <li><a href="landlords.html">Landlords</a></li>
+          <li><a href="index.html#valuation">Book a Valuation</a></li>
         </ul>
       </div>
       <div>
@@ -405,13 +316,14 @@ footer a:hover{color:var(--gold)}
         <ul>
           <li><a href="tel:+441342777977">East Grinstead: 01342 777977</a></li>
           <li><a href="tel:+441293561188">Crawley: 01293 561188</a></li>
+          <li><a href="tel:+441293561789">Property Management: 01293 561789</a></li>
           <li><a href="mailto:eastgrinstead@greenawayresidential.com">eastgrinstead@greenawayresidential.com</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Greenaway Residential · Members of The Property Ombudsman</span>
-      <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+      <span>© 2026 Greenaway Residential Estate Agents And Letting Agents. All rights reserved.</span>
+      <span>Sales · Lettings · Property Management</span>
     </div>
   </div>
 </footer>
@@ -419,20 +331,9 @@ footer a:hover{color:var(--gold)}
 <!-- sticky mobile action bar -->
 <div class="mobile-bar">
   <a class="call" href="tel:+441342777977"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.7 2z"/></svg>Call</a>
-  <a class="val" href="#val-form">Free Valuation</a>
+  <a class="val" href="#valuation">Book a Valuation</a>
 </div>
 
-<script>
-const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
-burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-document.getElementById('val-form').addEventListener('submit',e=>{
-  e.preventDefault();
-  document.getElementById('valSuccess').style.display='block';
-  e.target.querySelector('button[type=submit]').textContent='Request Sent ✓';
-});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+<script src="site.js?v=1"></script>
 </body>
 </html>
